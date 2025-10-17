@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Tab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="MainForLinkPage">
+      <div class="top-controls">
+        <button id="add-widget-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-plus-icon lucide-plus"
+          >
+            <path d="M5 12h14" />
+            <path d="M12 5v14" />
+          </svg>
+        </button>
+        <button id="add-password-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <circle cx="12" cy="16" r="1"></circle>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </button>
+        <button id="view-passwords-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </button>
+      </div>
+      <div id="widget-container"></div>
+      <div id="password-container"></div>
+      <div id="add-widget-modal" class="modal">
+        <div class="modal-content">
+          <h2>Add New Widget</h2>
+          <form id="add-widget-form">
+            <label for="widget-title">Title:</label>
+            <input type="text" id="widget-title" required />
+            <label for="widget-url">URL (include http:// or https://):</label>
+            <input type="url" id="widget-url" required />
+            <div class="button-group">
+              <button type="submit">Add</button>
+              <button type="button" id="cancel-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="add-password-modal" class="modal">
+        <div class="modal-content">
+          <h2>Add New Password</h2>
+          <form id="add-password-form">
+            <label for="password-platform">Platform:</label>
+            <input type="text" id="password-platform" placeholder="e.g., Gmail, Facebook, GitHub" required />
+            <label for="password-username">Username/Email:</label>
+            <input type="text" id="password-username" required />
+            <label for="password-password">Password:</label>
+            <div class="password-input-container">
+              <input type="password" id="password-password" required />
+              <button type="button" id="toggle-password-visibility" class="toggle-visibility-btn">👁️</button>
+            </div>
+            <label for="password-notes">Notes (optional):</label>
+            <textarea id="password-notes" placeholder="Additional notes about this password..."></textarea>
+            <div class="button-group">
+              <button type="submit">Save Password</button>
+              <button type="button" id="cancel-password-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="view-passwords-modal" class="modal">
+        <div class="modal-content passwords-modal-content">
+          <h2>Saved Passwords</h2>
+          <div id="passwords-list"></div>
+          <div class="button-group">
+            <button type="button" id="close-passwords-btn">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="edit-password-modal" class="modal">
+        <div class="modal-content">
+          <h2>Edit Password</h2>
+          <form id="edit-password-form">
+            <label for="edit-password-platform">Platform:</label>
+            <input type="text" id="edit-password-platform" placeholder="e.g., Gmail, Facebook, GitHub" required />
+            <label for="edit-password-username">Username/Email:</label>
+            <input type="text" id="edit-password-username" required />
+            <label for="edit-password-password">Password:</label>
+            <div class="password-input-container">
+              <input type="password" id="edit-password-password" required />
+              <button type="button" id="toggle-edit-password-visibility" class="toggle-visibility-btn">👁️</button>
+            </div>
+            <label for="edit-password-notes">Notes (optional):</label>
+            <textarea id="edit-password-notes" placeholder="Additional notes about this password..."></textarea>
+            <div class="button-group">
+              <button type="submit">Update Password</button>
+              <button type="button" id="cancel-edit-password-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="newtab.js"></script>
+  </body>
+</html>

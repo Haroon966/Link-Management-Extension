@@ -1,0 +1,524 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap");
+
+.MainForLinkPage {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(#3f87a6 10%, #ebf8e1a2 10%),
+    linear-gradient(to right, #ebf8e100 10%, #c73030 10% 10.2%, #ebf8e100 10.5%);
+  background-size: 100% 25px, 100% 100%;
+  background-repeat: repeat, no-repeat;
+}
+
+/* Top Controls Container */
+.top-controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10002;
+}
+
+/* Add Widget Button (Sticky Note Style) */
+#add-widget-btn, #add-password-btn, #view-passwords-btn {
+  padding: 10px 18px;
+  background: linear-gradient(
+    145deg,
+    #80deea 0%,
+    #4dd0e1 100%
+  ); /* Cyan to match body */
+  border: 2px solid #d81b60; /* Pink border */
+  border-radius: 8px 8px 8px 0; /* Irregular corners */
+  color: #1a237e; /* Deep indigo */
+  font-family: "Caveat", cursive; /* Handwritten font */
+  font-size: 20px; /* Larger for readability */
+  font-weight: 700; /* Bold for emphasis */
+  cursor: pointer;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+  transform: rotate(1deg); /* Slight tilt */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+#add-password-btn {
+  background: linear-gradient(145deg, #ffd54f 0%, #ffca28 100%);
+  border-color: #2e7d32;
+}
+
+#view-passwords-btn {
+  background: linear-gradient(145deg, #f8bbd9 0%, #f48fb1 100%);
+  border-color: #7b1fa2;
+}
+
+#add-widget-btn:hover, #add-password-btn:hover, #view-passwords-btn:hover {
+  background: linear-gradient(
+    145deg,
+    #b2ebf2 0%,
+    #80deea 100%
+  ); /* Brighter cyan */
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#add-password-btn:hover {
+  background: linear-gradient(145deg, #ffe082 0%, #ffd54f 100%);
+}
+
+#view-passwords-btn:hover {
+  background: linear-gradient(145deg, #fce4ec 0%, #f8bbd9 100%);
+}
+
+/* Link Widget (Funky Handwritten Sticky Note) */
+.link-widget {
+  position: fixed;
+  background: linear-gradient(
+    145deg,
+    #ffd54f 0%,
+    #ffca28 100%
+  ); /* Vibrant yellow-orange */
+  border: 2px solid #d81b60; /* Bold pink border */
+  border-radius: 10px 10px 10px 0; /* Irregular corners */
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  cursor: move;
+  z-index: 10000;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2),
+    -3px -3px 8px rgba(255, 255, 255, 0.6) inset;
+  transform: rotate(2deg); /* Playful tilt */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.link-widget:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.25),
+    -3px -3px 8px rgba(255, 255, 255, 0.6) inset;
+  background: linear-gradient(145deg, #ffe082 0%, #ffd54f 100%); /* Brighter */
+}
+
+.link-widget-favicon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #7b1fa2; /* Purple border */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.link-widget-favicon:hover {
+  transform: scale(1.2) rotate(5deg); /* Wobbly zoom */
+  filter: drop-shadow(0 0 5px rgba(123, 31, 162, 0.5)); /* Purple glow */
+}
+
+.link-widget-link {
+  text-decoration: none;
+  color: #1a237e; /* Deep indigo */
+  font-family: "Caveat", cursive; /* Handwritten font */
+  font-size: 22px; /* Larger for playful look */
+  font-weight: 400; /* Regular weight for casual feel */
+  letter-spacing: 1px; /* Spread for flair */
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.link-widget-link:hover {
+  color: #e91e63; /* Hot pink */
+  text-decoration: wavy underline; /* Funky wavy underline */
+  transform: translateX(2px); /* Slight slide */
+}
+
+.link-widget-close {
+  margin-left: 12px;
+  cursor: pointer;
+  color: #2e7d32; /* Vibrant green */
+  font-size: 24px; /* Larger for emphasis */
+  font-family: "Caveat", cursive;
+  font-weight: 700; /* Bold for contrast */
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.link-widget-close:hover {
+  color: #f50057; /* Neon pink */
+  transform: scale(1.3) rotate(15deg); /* Bouncy tilt */
+}
+
+/* Animation for sticky note entrance */
+@keyframes wiggle {
+  0% {
+    transform: rotate(2deg);
+  }
+  25% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(2deg);
+  }
+}
+
+.link-widget {
+  animation: wiggle 0.5s ease-in-out; /* Initial wiggle */
+}
+
+/* Modal (Handwritten Sticky Note Theme) */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 20, 0.7);
+  z-index: 10001;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: linear-gradient(
+    145deg,
+    #ffd54f 0%,
+    #ffca28 100%
+  ); /* Match widget */
+  padding: 24px;
+  border: 2px solid #d81b60; /* Pink border */
+  border-radius: 10px 10px 10px 0;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transform: scale(0.8);
+  animation: popIn 0.3s ease forwards;
+}
+
+@keyframes popIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+.modal-content h2 {
+  margin: 0 0 20px;
+  font-family: "Caveat", cursive;
+  font-size: 28px; /* Larger for handwritten effect */
+  font-weight: 700;
+  color: #1a237e;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  font-weight: 400;
+  color: #2e7d32; /* Green to match widget */
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #d81b60; /* Pink border */
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  color: #1a237e;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: #e91e63;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+}
+
+.modal-content .button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Caveat", cursive;
+  font-size: 20px;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.modal-content button[type="submit"] {
+  background: linear-gradient(90deg, #80deea, #4dd0e1); /* Cyan */
+  color: #1a237e;
+}
+
+.modal-content button[type="submit"]:hover {
+  background: linear-gradient(90deg, #b2ebf2, #80deea);
+  transform: translateY(-1px);
+}
+
+.modal-content button[type="button"] {
+  background: linear-gradient(
+    145deg,
+    #ffd54f 0%,
+    #ffca28 100%
+  ); /* Match widget */
+  color: #1a237e;
+}
+
+.modal-content button[type="button"]:hover {
+  background: linear-gradient(145deg, #ffe082 0%, #ffd54f 100%);
+  transform: translateY(-1px);
+}
+
+/* Password Management Styles */
+.password-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-container input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.toggle-visibility-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.toggle-visibility-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.modal-content textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #d81b60;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  color: #1a237e;
+  resize: vertical;
+  min-height: 60px;
+  box-sizing: border-box;
+}
+
+.modal-content textarea:focus {
+  outline: none;
+  border-color: #e91e63;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+}
+
+/* Password List Styles */
+.passwords-modal-content {
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#passwords-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.password-item {
+  background: linear-gradient(145deg, #f3e5f5 0%, #e1bee7 100%);
+  border: 2px solid #7b1fa2;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.password-item:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.password-platform {
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+  font-weight: 700;
+  color: #4a148c;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-username {
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  color: #2e7d32;
+  margin-bottom: 8px;
+}
+
+.password-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.password-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Caveat", cursive;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.copy-password-btn {
+  background: linear-gradient(90deg, #4caf50, #66bb6a);
+  color: white;
+}
+
+.copy-password-btn:hover {
+  background: linear-gradient(90deg, #66bb6a, #81c784);
+  transform: translateY(-1px);
+}
+
+.copy-username-btn {
+  background: linear-gradient(90deg, #2196f3, #42a5f5);
+  color: white;
+}
+
+.copy-username-btn:hover {
+  background: linear-gradient(90deg, #42a5f5, #64b5f6);
+  transform: translateY(-1px);
+}
+
+.edit-password-btn {
+  background: linear-gradient(90deg, #ff9800, #ffb74d);
+  color: white;
+}
+
+.edit-password-btn:hover {
+  background: linear-gradient(90deg, #ffb74d, #ffcc80);
+  transform: translateY(-1px);
+}
+
+.delete-password-btn {
+  background: linear-gradient(90deg, #f44336, #ef5350);
+  color: white;
+}
+
+.delete-password-btn:hover {
+  background: linear-gradient(90deg, #ef5350, #e57373);
+  transform: translateY(-1px);
+}
+
+.password-notes {
+  font-family: "Caveat", cursive;
+  font-size: 16px;
+  color: #5d4037;
+  font-style: italic;
+  margin-top: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+}
+
+.password-strength {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.strength-weak {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.strength-medium {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.strength-strong {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.copy-feedback {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, #4caf50, #66bb6a);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  font-weight: 600;
+  z-index: 10003;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: copyFeedback 2s ease-in-out;
+}
+
+@keyframes copyFeedback {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+  .modal-content {
+    max-width: 90%;
+    padding: 20px;
+  }
+  #add-widget-btn, #add-password-btn, #view-passwords-btn {
+    padding: 8px 14px;
+    font-size: 18px;
+  }
+  .top-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .passwords-modal-content {
+    max-width: 95%;
+  }
+}

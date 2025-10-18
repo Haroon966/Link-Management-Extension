@@ -8,8 +8,104 @@
   </head>
   <body>
     <div class="MainForLinkPage">
-      <div class="top-controls">
-        <button id="add-widget-btn">
+      <!-- Header Section with Controls and Search -->
+      <div class="header-section">
+        <div class="top-controls">
+          <button id="edit-mode-toggle-btn" class="edit-mode-toggle" title="Toggle Edit Mode (E)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            <span class="edit-mode-label"></span>
+          </button>
+          <button id="add-widget-btn" title="Add New Link (Ctrl+N)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-plus-icon lucide-plus"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5v14" />
+            </svg>
+            <span class="button-label">Add Link</span>
+          </button>
+          <button id="add-password-btn" title="Save Password (Ctrl+P)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <circle cx="12" cy="16" r="1"></circle>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span class="button-label">Save Password</span>
+          </button>
+          <button id="view-passwords-btn" title="View Saved Passwords (Ctrl+Shift+P)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <circle cx="12" cy="16" r="1"></circle>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span class="button-label">View Passwords</span>
+          </button>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+          <div class="search-box">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M21 21l-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="search-input" placeholder="Search links and todos..." title="Search (Ctrl+F)">
+            <button id="clear-search-btn" class="clear-search" title="Clear search">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div id="search-results-info" class="search-results-info"></div>
+        </div>
+      </div>
+      
+      <!-- Settings Button - Bottom Right -->
+      <div class="settings-container">
+        <button id="settings-btn" title="Settings (Ctrl+,)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -20,45 +116,82 @@
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-plus-icon lucide-plus"
           >
-            <path d="M5 12h14" />
-            <path d="M12 5v14" />
-          </svg>
-        </button>
-        <button id="add-password-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <circle cx="12" cy="16" r="1"></circle>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-        </button>
-        <button id="view-passwords-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
             <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
           </svg>
         </button>
+        
+        <!-- Settings Dropdown -->
+        <div id="settings-dropdown" class="settings-dropdown">
+          <div class="settings-header">
+            <h3>Settings</h3>
+            <button id="close-settings-btn" class="close-settings-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="settings-content">
+            <div class="setting-group">
+              <h4>Theme</h4>
+              <div class="theme-options">
+                <button class="theme-btn" data-theme="default">Default</button>
+                <button class="theme-btn" data-theme="dark">Dark</button>
+                <button class="theme-btn" data-theme="ocean">Ocean</button>
+                <button class="theme-btn" data-theme="sunset">Sunset</button>
+              </div>
+            </div>
+            
+            <div class="setting-group">
+              <h4>Edit Mode</h4>
+              <label class="toggle-switch">
+                <input type="checkbox" id="edit-mode-toggle">
+                <span class="slider"></span>
+                <span class="toggle-label">Enable Edit Mode</span>
+              </label>
+            </div>
+            
+            <div class="setting-group">
+              <h4>Todo Management</h4>
+              <div class="data-buttons">
+                <button id="view-rollover-history" class="data-btn history-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                    <path d="M21 3v5h-5"></path>
+                    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                    <path d="M3 21v-5h5"></path>
+                  </svg>
+                  Rollover History
+                </button>
+              </div>
+            </div>
+            
+            <div class="setting-group">
+              <h4>Data Management</h4>
+              <div class="data-buttons">
+                <button id="export-data-btn" class="data-btn export-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7,10 12,15 17,10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Export Data
+                </button>
+                <button id="import-data-btn" class="data-btn import-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17,10 12,15 7,10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Import Data
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="widget-container"></div>
       <div id="password-container"></div>
@@ -133,7 +266,203 @@
           </form>
         </div>
       </div>
+
+      <!-- Collaborative Toggle Icon -->
+      <button id="collaborative-toggle-icon" class="collaborative-toggle-icon" title="Open Collaborative Mode">
+        🤝
+      </button>
+
+      <!-- Collaborative Textarea Sidebar -->
+      <div id="collaborative-sidebar" class="collaborative-sidebar collapsed">
+        <div class="collaborative-sidebar-header">
+          <h2>🤝 Live Collaboration</h2>
+          <button id="toggle-collaborative-btn" class="toggle-collaborative-btn" title="Close Collaborative Mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="collaborative-controls">
+          <div class="connection-status">
+            <div id="connection-indicator" class="connection-indicator offline"></div>
+            <span id="connection-text">Searching for peers...</span>
+          </div>
+          
+          <div class="room-controls">
+            <input type="text" id="room-id-input" placeholder="Room ID (optional)" maxlength="20">
+            <button id="join-room-btn" title="Join specific room">Join</button>
+          </div>
+          
+          <div class="active-users">
+            <span id="users-count">0 users online</span>
+            <div id="user-indicators" class="user-indicators"></div>
+          </div>
+        </div>
+        
+        <div class="collaborative-textarea-container">
+          <textarea 
+            id="collaborative-textarea" 
+            placeholder="Start typing to collaborate with others on the same network..."
+            spellcheck="true"
+          ></textarea>
+        </div>
+        
+        <div class="collaborative-footer">
+          <button id="clear-text-btn" class="clear-text-btn" title="Clear all text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18"></path>
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+            </svg>
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <div id="todo-sidebar" class="todo-sidebar">
+        <div class="todo-sidebar-header">
+          <h2>📝 My Todo List</h2>
+        </div>
+        <form id="add-todo-form" class="todo-form">
+          <div class="todo-input-container">
+            <input type="text" id="todo-text" placeholder="What needs to be done?" required />
+            <div class="todo-options-row">
+              <select id="todo-priority" class="priority-selector">
+                <option value="low">🟢 Low</option>
+                <option value="medium" selected>🟡 Medium</option>
+                <option value="high">🔴 High</option>
+                <option value="urgent">🚨 Urgent</option>
+              </select>
+              <input type="date" id="todo-date" class="date-selector" />
+            </div>
+          </div>
+          <button type="submit" class="add-todo-btn">+</button>
+        </form>
+        <div id="todo-stats" class="todo-stats">
+          <div class="stats-item">
+            <span class="stats-number" id="total-todos">0</span>
+            <span class="stats-label">Total</span>
+          </div>
+          <div class="stats-item">
+            <span class="stats-number" id="completed-todos">0</span>
+            <span class="stats-label">Done</span>
+          </div>
+          <div class="stats-item">
+            <span class="stats-number" id="pending-todos">0</span>
+            <span class="stats-label">Pending</span>
+          </div>
+        </div>
+        
+        <div id="todos-list" class="todos-container"></div>
+        
+        <div class="date-navigation">
+          <div class="current-date-display">
+            <div class="date-text-container">
+              <span id="current-date-text">Today</span>
+              <div class="rollover-buttons">
+                <button id="rollover-prev-btn" class="rollover-btn rollover-prev" title="Move incomplete tasks to previous day">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15,18 9,12 15,6"></polyline>
+                  </svg>
+                </button>
+                <button id="rollover-next-btn" class="rollover-btn rollover-next" title="Move incomplete tasks to next day">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <input type="date" id="date-picker" class="date-picker" />
+          </div>
+          <div class="date-nav-buttons">
+            <button id="prev-date-btn" class="date-nav-btn" title="Previous day">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15,18 9,12 15,6"></polyline>
+              </svg>
+            </button>
+            <button id="next-date-btn" class="date-nav-btn" title="Next day">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9,18 15,12 9,6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <div class="priority-filters">
+          <button class="priority-filter active" data-priority="all">All</button>
+          <button class="priority-filter" data-priority="urgent">🚨</button>
+          <button class="priority-filter" data-priority="high">🔴</button>
+          <button class="priority-filter" data-priority="medium">🟡</button>
+          <button class="priority-filter" data-priority="low">🟢</button>
+        </div>
+      </div>
+
+      <div id="settings-modal" class="modal">
+        <div class="modal-content settings-modal-content">
+          <h2>⚙️ Settings</h2>
+          
+          <div class="settings-section">
+            <h3>🎨 Theme</h3>
+            <div class="theme-options">
+              <label class="theme-option">
+                <input type="radio" name="theme" value="default" checked>
+                <span class="theme-preview default-theme">Default</span>
+              </label>
+              <label class="theme-option">
+                <input type="radio" name="theme" value="dark">
+                <span class="theme-preview dark-theme">Dark</span>
+              </label>
+              <label class="theme-option">
+                <input type="radio" name="theme" value="ocean">
+                <span class="theme-preview ocean-theme">Ocean</span>
+              </label>
+              <label class="theme-option">
+                <input type="radio" name="theme" value="sunset">
+                <span class="theme-preview sunset-theme">Sunset</span>
+              </label>
+            </div>
+          </div>
+
+           <div class="settings-section">
+             <h3>✏️ Edit Mode</h3>
+             <div class="edit-mode-options">
+               <label class="edit-mode-option">
+                 <input type="checkbox" id="edit-mode-toggle">
+                 <span class="edit-mode-label">Enable Edit Mode</span>
+               </label>
+               <div class="edit-mode-info">
+                 <p>When enabled, you can delete links by clicking the ❌ icon on each widget.</p>
+                 <p>When disabled, delete icons are hidden for a cleaner interface.</p>
+               </div>
+             </div>
+           </div>
+           <div class="settings-section">
+             <h3>💾 Data Management</h3>
+             <div class="data-actions">
+               <button id="export-data-btn" class="action-btn export-btn">
+                 📤 Export All Data
+               </button>
+               <button id="import-data-btn" class="action-btn import-btn">
+                 📥 Import Data
+               </button>
+               <input type="file" id="import-file-input" accept=".json" style="display: none;">
+             </div>
+             <div class="data-info">
+               <p>Export your todos, links, passwords, and positions to a backup file.</p>
+               <p>Import a previously exported file to restore all your data.</p>
+             </div>
+           </div>
+
+          <div class="button-group">
+            <button type="button" id="close-settings-btn">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="collaborative-peer.js"></script>
+    <script src="collaborative-sync.js"></script>
     <script src="newtab.js"></script>
   </body>
 </html>
